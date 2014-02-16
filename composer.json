@@ -1,0 +1,25 @@
+{
+    "name": "nineinchnick/closure-table-manager",
+    "type": "library",
+    "description": "PHP library that helps maintain adjacency list SQL structures.",
+    "keywords": ["closure table", "adjacency list", "sql"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jan Waś"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+		"ulrichsg/getopt-php": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "nineinchnick\\": "src/",
+            "nineinchnick\\": "tests/",
+        }
+    },
+	"bin": [
+		"bin/my-script"
+	]
+}
