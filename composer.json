@@ -20,6 +20,6 @@
         }
     },
 	"bin": [
-		"bin/my-script"
+		"bin/closureTable.php"
 	]
 }
