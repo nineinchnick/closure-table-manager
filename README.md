@@ -39,14 +39,21 @@ Options:
   --table_suffix <arg>    Suffix of the closure table.
 ~~~
 
-## 
+## Example
 
-Let's assume our $table are categories. And we have some products in these categories. Like this:
+Having the following tables:
 
 ~~~sql
 CREATE TABLE products (
   id INTEGER,
   category_id INTEGER NOT NULL REFERENCES categories (id),
+  -- ...
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE categories (
+  id INTEGER,
+  parent_id INTEGER NOT NULL REFERENCES categories (id),
   -- ...
   PRIMARY KEY(id)
 );
@@ -61,8 +68,7 @@ INNER JOIN categories_tree c on p.category_id = c.id
      WHERE c.parent_id = <SOME_ID>;
 ~~~
 
-And why do we need depth column?
-Let's stay with this categories example. When user is _in_ some category, we would like to show him _path_ to this category. So he could easily move to some parent category.
+When user is _in_ some category, we would like to show him _path_ to this category. So he could easily move to some parent category.
 
 ~~~sql
     SELECT c.*
