@@ -16,6 +16,15 @@ Currently supported databases:
 
 Pull requests with other databases support are very welcome.
 
+## Installation
+
+Using composer:
+
+~~~bash
+curl -sS https://getcomposer.org/installer | php
+./composer.phar require nineinchnick/closure-table-manager:dev-master
+~~~
+
 ## Usage
 
 Call `Manager::getQueries()` to get an array of SQL queries that create a helper table to store ancestor/descendant relationships from the main table and triggers that maintain it.
