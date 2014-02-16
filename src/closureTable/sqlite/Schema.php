@@ -2,7 +2,7 @@
 
 namespace nineinchnick\closureTable\sqlite;
 
-class Schema extends nineinchnick\closureTable\Schema
+class Schema extends \nineinchnick\closureTable\Schema
 {
 	public function getCreateTableQuery($tableName, $primaryKey='id', $primaryKeyType='integer', $tableNameSuffix='_tree')
 	{
@@ -19,7 +19,7 @@ SQL;
 		return $query;
 	}
 
-	public function getCreateTriggersQueries($tableName, $parentKey='parent_id', $primaryKey='id', $primaryKeyType='integer', $path=null, $pathFrom=null, $pathSeparator='/', $tableNameSuffix='_tree')
+	public function getCreateTriggerQueries($tableName, $parentKey='parent_id', $primaryKey='id', $primaryKeyType='integer', $path=null, $pathFrom=null, $pathSeparator='/', $tableNameSuffix='_tree')
 	{
 		$treeTable = $this->getTreeTableName($tableName, $tableNameSuffix);
 		$queries = array();
@@ -221,7 +221,7 @@ SQL;
 	 * @param string $tableName
 	 * @return array
 	 */
-	public function getDropTriggersQueries($tableName, $tableNameSuffix)
+	public function getDropTriggerQueries($tableName, $tableNameSuffix)
 	{
 		$suffixes = array('ai', 'bu_1', 'bu_2', 'au_path_0', 'au_path_1', 'au_1', 'au_path_2', 'au_2', 'au_3', 'ai_path_2', 'ai_path_1', 'au_path_3');
 		$treeTable = $this->getTreeTableName($tableName, $tableNameSuffix);

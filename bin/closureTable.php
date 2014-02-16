@@ -1,9 +1,11 @@
 #!/usr/bin/env php
 <?php
 
-use Ulrichsg\Getopt;
+namespace nineinchnick\closureTable;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../../../autoload.php';
+
+use Ulrichsg\Getopt\Getopt;
 
 $getopt = new Getopt(array(
     array('d', 'dsn', Getopt::REQUIRED_ARGUMENT, 'DSN connection string or just the driver name (pgsql, sqlite, mysql).'),
@@ -17,5 +19,12 @@ $getopt = new Getopt(array(
     array(null, 'table_suffix', Getopt::REQUIRED_ARGUMENT, 'Suffix of the closure table.', '_tree'),
 ));
 
-$manager = new nineinchnick\closureTable\Manager;
+$getopt->parse();
+
+if ($getopt['dsn'] === null || $getopt['table'] === null) {
+	echo $getopt->getHelpText();
+	exit(1);
+}
+
+$manager = new Manager;
 $manager->run($getopt['dsn'], $getopt['table'], $getopt['parent'], $getopt['pk'], $getopt['pk_type'], $getopt['path'], $getopt['path_from'], $getopt['path_separator'], $getopt['table_suffix']);

@@ -22,16 +22,16 @@ class Manager
 	 * schema class name.
 	 */
 	public $schemaMap = array(
-		'pgsql' => 'nineinchnick\closureTable\pgsql\Schema',    // PostgreSQL
-		'mysqli' => 'nineinchnick\closureTable\mysql\Schema',   // MariaDB and MySQL
-		'mysql' => 'nineinchnick\closureTable\mysql\Schema',    // MariaDB and MySQL
-		'sqlite' => 'nineinchnick\closureTable\sqlite\Schema',  // sqlite 3
-		//'sqlite2' => 'nineinchnick\closureTable\sqlite\Schema', // sqlite 2
-		//'sqlsrv' => 'nineinchnick\closureTable\mssql\Schema',   // newer MSSQL driver on MS Windows hosts
-		//'oci' => 'nineinchnick\closureTable\oci\Schema',        // Oracle driver
-		//'mssql' => 'nineinchnick\closureTable\mssql\Schema',    // older MSSQL driver on MS Windows hosts
-		//'dblib' => 'nineinchnick\closureTable\mssql\Schema',    // dblib drivers on GNU/Linux (and maybe other OSes) hosts
-		//'cubrid' => 'nineinchnick\closureTable\cubrid\Schema',  // CUBRID
+		'pgsql' => '\nineinchnick\closureTable\pgsql\Schema',    // PostgreSQL
+		'mysqli' => '\nineinchnick\closureTable\mysql\Schema',   // MariaDB and MySQL
+		'mysql' => '\nineinchnick\closureTable\mysql\Schema',    // MariaDB and MySQL
+		'sqlite' => '\nineinchnick\closureTable\sqlite\Schema',  // sqlite 3
+		//'sqlite2' => '\nineinchnick\closureTable\sqlite\Schema', // sqlite 2
+		//'sqlsrv' => '\nineinchnick\closureTable\mssql\Schema',   // newer MSSQL driver on MS Windows hosts
+		//'oci' => '\nineinchnick\closureTable\oci\Schema',        // Oracle driver
+		//'mssql' => '\nineinchnick\closureTable\mssql\Schema',    // older MSSQL driver on MS Windows hosts
+		//'dblib' => '\nineinchnick\closureTable\mssql\Schema',    // dblib drivers on GNU/Linux (and maybe other OSes) hosts
+		//'cubrid' => '\nineinchnick\closureTable\cubrid\Schema',  // CUBRID
 	);
 
 

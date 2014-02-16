@@ -15,8 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "nineinchnick\\": "src/",
-            "nineinchnick\\": "tests/"
+            "nineinchnick\\": "src/"
         }
     },
 	"bin": [
