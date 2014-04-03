@@ -17,6 +17,7 @@ $getopt = new Getopt(array(
     array(null, 'path_from', Getopt::REQUIRED_ARGUMENT, 'Column which value will be used to build a path. Its values cant\'t contain path_separator.'),
     array(null, 'path_separator', Getopt::REQUIRED_ARGUMENT, 'Path separator character.', '/'),
     array(null, 'table_suffix', Getopt::REQUIRED_ARGUMENT, 'Suffix of the closure table.', '_tree'),
+    array(null, 'schema_name', Getopt::REQUIRED_ARGUMENT, 'Name of schema containing the table.', null),
 ));
 
 $getopt->parse();
@@ -27,4 +28,4 @@ if ($getopt['dsn'] === null || $getopt['table'] === null) {
 }
 
 $manager = new Manager;
-$manager->run($getopt['dsn'], $getopt['table'], $getopt['parent'], $getopt['pk'], $getopt['pk_type'], $getopt['path'], $getopt['path_from'], $getopt['path_separator'], $getopt['table_suffix']);
+$manager->run($getopt['dsn'], $getopt['table'], $getopt['parent'], $getopt['pk'], $getopt['pk_type'], $getopt['path'], $getopt['path_from'], $getopt['path_separator'], $getopt['table_suffix'], $getopt['schema_name']);

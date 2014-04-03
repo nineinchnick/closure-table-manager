@@ -68,9 +68,9 @@ class Manager
 		}
 	}
 
-	public function run($dsn, $tableName, $parentKey='parent_id', $primaryKey='id', $primaryKeyType='integer', $path=null, $pathFrom=null, $pathSeparator='/', $tableNameSuffix='_tree')
+	public function run($dsn, $tableName, $parentKey='parent_id', $primaryKey='id', $primaryKeyType='integer', $path=null, $pathFrom=null, $pathSeparator='/', $tableNameSuffix='_tree', $schemaName=null)
 	{
-		$queries = $this->getQueries($dsn, $tableName, $parentKey, $primaryKey, $primaryKeyType, $path, $pathFrom, $tableNameSuffix);
+		$queries = $this->getQueries($dsn, $tableName, $parentKey, $primaryKey, $primaryKeyType, $path, $pathFrom, $pathSeparator, $tableNameSuffix, $schemaName);
 
 		foreach($queries as $query)
 		{
@@ -78,15 +78,15 @@ class Manager
 		}
 	}
 
-	public function getQueries($dsn, $tableName, $parentKey='parent_id', $primaryKey='id', $primaryKeyType='integer', $path=null, $pathFrom=null, $pathSeparator='/', $tableNameSuffix='_tree')
+	public function getQueries($dsn, $tableName, $parentKey='parent_id', $primaryKey='id', $primaryKeyType='integer', $path=null, $pathFrom=null, $pathSeparator='/', $tableNameSuffix='_tree', $schemaName=null)
 	{
 		$schema = $this->getSchema($dsn);
 
-		$tableQuery = $schema->getCreateTableQuery($tableName, $primaryKey, $primaryKeyType, $tableNameSuffix);
-		$triggerQueries = $schema->getCreateTriggerQueries($tableName, $parentKey, $primaryKey, $primaryKeyType, $path, $pathFrom, $pathSeparator, $tableNameSuffix);
+		$tableQuery = $schema->getCreateTableQuery($schemaName, $tableName, $primaryKey, $primaryKeyType, $tableNameSuffix);
+		$triggerQueries = $schema->getCreateTriggerQueries($schemaName, $tableName, $parentKey, $primaryKey, $primaryKeyType, $path, $pathFrom, $pathSeparator, $tableNameSuffix);
 
-		$dropTableQuery = $schema->getDropTableQuery($tableName, $tableNameSuffix);
-		$dropTriggerQueries = $schema->getDropTriggerQueries($tableName, $tableNameSuffix);
+		$dropTableQuery = $schema->getDropTableQuery($schemaName, $tableName, $tableNameSuffix);
+		$dropTriggerQueries = $schema->getDropTriggerQueries($schemaName, $tableName, $tableNameSuffix);
 
 		return array_merge(array($dropTableQuery, $tableQuery), $dropTriggerQueries, $triggerQueries);
 	}

@@ -4,7 +4,7 @@ namespace nineinchnick\closureTable\mysql;
 
 class Schema extends \nineinchnick\closureTable\Schema
 {
-	public function getCreateTableQuery($tableName, $primaryKey='id', $primaryKeyType='integer', $tableNameSuffix='_tree')
+	public function getCreateTableQuery($schemaName, $tableName, $primaryKey='id', $primaryKeyType='integer', $tableNameSuffix='_tree')
 	{
 		$treeTable = $this->getTreeTableName($tableName, $tableNameSuffix);
 		$query = <<<SQL
@@ -19,7 +19,7 @@ SQL;
 		return $query;
 	}
 
-	public function getCreateTriggerQueries($tableName, $parentKey='parent_id', $primaryKey='id', $primaryKeyType='integer', $path=null, $pathFrom=null, $pathSeparator='/', $tableNameSuffix='_tree')
+	public function getCreateTriggerQueries($schemaName, $tableName, $parentKey='parent_id', $primaryKey='id', $primaryKeyType='integer', $path=null, $pathFrom=null, $pathSeparator='/', $tableNameSuffix='_tree')
 	{
 		$treeTable = $this->getTreeTableName($tableName, $tableNameSuffix);
 		$queries = array();
@@ -145,7 +145,7 @@ SQL;
 		return $queries;
 	}
 
-	public function getDropTableQuery($tableName, $tableNameSuffix='_tree')
+	public function getDropTableQuery($schemaName, $tableName, $tableNameSuffix='_tree')
 	{
 		$treeTable = $this->getTreeTableName($tableName, $tableNameSuffix);
 		return "DROP TABLE IF EXISTS `$treeTable`";
@@ -155,7 +155,7 @@ SQL;
 	 * @param string $tableName
 	 * @return array
 	 */
-	public function getDropTriggerQueries($tableName, $tableNameSuffix)
+	public function getDropTriggerQueries($schemaName, $tableName, $tableNameSuffix)
 	{
 		$suffixes = array('ai', 'bu', 'au', 'bi_path', 'bu_path');
 		$treeTable = $this->getTreeTableName($tableName, $tableNameSuffix);
