@@ -175,7 +175,7 @@ SQL;
 		$suffixes = array('ai', 'bu', 'au', 'bi_path', 'bu_path');
 		$queries = array();
 		foreach($suffixes as $suffix) {
-			$queries[] = "DROP TRIGGER IF EXISTS \"{$tableName}_tree_{$suffix}\" ON TABLE {$schemaName}\"$tableName\"";
+			$queries[] = "DROP TRIGGER IF EXISTS \"{$tableName}_tree_{$suffix}\" ON {$schemaName}\"$tableName\"";
 		}
 		foreach($suffixes as $suffix) {
 			$queries[] = "DROP FUNCTION IF EXISTS {$schemaName}\"{$tableName}_tree_{$suffix}\"()";
